@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap");
+
+body {
+  overflow: hidden;
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  height: 100vh; /* Prend toute la hauteur de l'écran */
+  background: linear-gradient(135deg, #f6d365, #fda085);
+  color: #4a4a4a;
+  font-family: "Quicksand", sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: "Pacifico", cursive;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+  color: #6d6875;
+  margin-bottom: 20px;
+}
+
+form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 15px;
+  width: 90%;
+  max-width: 400px; /* Évite que le formulaire soit trop large */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #6d6875;
+}
+
+select,
+input {
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+  width: 50%;
+  margin-bottom: 5px;
+  background: #fff;
+  color: #333;
+  font-family: "Quicksand", sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+
+select:hover,
+input:hover {
+  border-color: #f6a192;
+  cursor: pointer;
+}
+
+#amount {
+  width: 60%;
+}
+
+button {
+  /*Empêcher la sélection de texte*/
+  user-select: none; /* Empêche la sélection de texte */
+  -webkit-user-select: none; /* Pour les navigateurs basés sur WebKit (Chrome, Safari) */
+  -moz-user-select: none; /* Pour Firefox */
+  -ms-user-select: none; /* Pour Internet Explorer/Edge */
+  -webkit-tap-highlight-color: transparent; /* Supprime la surbrillance sur mobile */
+  outline: none; /* Supprime le contour de focus */
+
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  background: #ff847c;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  display: block; /* Force le bouton à prendre toute la largeur disponible */
+  margin: 20px auto; /* Centre le bouton horizontalement */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Ombre subtile */
+}
+
+button:hover {
+  background: #e84a5f;
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 15px rgba(232, 74, 95, 0.8); /* Glow rouge doux */
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.result-text {
+  margin-bottom: 20px;
+}
+
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.currency-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+}
+select {
+  width: 250px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: transform 0.5s ease-in-out, opacity 0.3s;
+}
+.swap-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6), 0px 0px 10px rgba(76, 175, 80, 0.8);
+}
+.swap-button:hover {
+  background-color: #45a049;
+}
+.swap-button:active {
+  transform: rotate(180deg);
+}
+/* Effet de transition */
+.swapping {
+  transform: translateX(100px);
+  opacity: 0.5;
+}
+
+@keyframes flameGlow {
+  0% {
+    text-shadow: 0 0 5px #ff8c00, 0 0 10px #ff4500;
+  }
+  50% {
+    text-shadow: 0 0 10px #ff4500, 0 0 20px #ff6347;
+  }
+  100% {
+    text-shadow: 0 0 5px #ff8c00, 0 0 10px #ff4500;
+  }
+}
+
+.flame-text {
+  color: #f7dda0;
+  text-align: center;
+  animation: flameGlow 3s infinite alternate ease-in-out;
+}
+
+#currency_to {
+  margin-bottom: 20px;
+}
+
+.update-info {
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+  text-align: center;
+}
