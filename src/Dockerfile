@@ -1,11 +1,20 @@
-# Utiliser l'image officielle PHP avec Apache
-FROM php:8.1-apache
+# Utilisation d'une image PHP avec Apache
+FROM php:8.2-apache
 
-# Copier tous les fichiers du projet dans le dossier de l’hôte Apache
-COPY . /var/www/html/
+# Installation des extensions nécessaires
+RUN apt-get update && apt-get install -y libxml2-dev \
+    && docker-php-ext-install simplexml
 
-# Exposer le port 80 pour que Render puisse y accéder
+# Copie des fichiers du projet dans le conteneur
+WORKDIR /var/www/html
+COPY . .
+
+# Configuration des droits
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html
+
+# Exposition du port
 EXPOSE 80
 
-# Démarrer Apache en mode foreground
+# Démarrage d'Apache
 CMD ["apache2-foreground"]

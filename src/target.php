@@ -5,30 +5,38 @@ ou récupération depuis la BCE si le cache a expiré (24h) */
 
 function getExchangeRates() {
 
-   $cache_file = "/src/exchange_rates.json"; //Fichier du cache
+   $cache_file = "./exchange_rates.json"; //Fichier du cache
    $cache_lifetime = 24*60*60; //On garde les taux en cache pendant 24 heures
 
    //On vérifie si on a les taux en cache et si ils sont encore valides
    if (file_exists($cache_file) && (time() - filemtime($cache_file) < $cache_lifetime)) {
-      $cache_content = file_get_contents($cache_file);
-      var_dump($cache_content);
+      $cached_data = file_get_contents($cache_file);
+      $decoded_data = json_decode($cached_data, true);
 
-      return json_decode(file_get_contents($cache_file), true);
-   }
+      //Pour voir le contenu de ce qu'on récupère du cache
+      //$cache_content = file_get_contents($cache_file);
+      //var_dump($cache_content);
+
+      // Vérifier si le JSON est invalide ou vide
+      if (!is_array($decoded_data) || !isset($decoded_data["rates"])) {
+         unlink($cache_file); // Supprime le fichier corrompu
+         return ["rates" => [], "date" => "Unavailable"];
+     }
+     return $decoded_data;
+  }
 
    //Url de l'API de la BCE
    $api_url = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
    
    //Récupération des données via l'api (au format XML)
-   $xml = simplexml_load_file($api_url);
+   $xml = @simplexml_load_file($api_url); // Utilisation de `@` pour éviter les warnings
 
    //Vérifie si on a récupéré les données
    if ($xml === false) {
-      echo "<div class='error-message'>Error: Could not fetch exchange rates. Try again later.</div>";
       return ["rates" => [], "date" => "Unavailable"];
    }
 
-   //Extraction de la date et des taux dans le tableau "rates"
+   //Extraction de la date et des taux
    $namespace = $xml->Cube->Cube->attributes();
    $date = (string)$namespace["time"];
 
@@ -48,11 +56,12 @@ function getExchangeRates() {
 
    //On écrase les données du cache uniquement si la BCE a retourné des données
    if (!empty($rates)) {
-      file_put_contents($cache_file, json_encode($new_cache_data));
+      if (file_put_contents($cache_file, json_encode($new_cache_data)) === false) {
+         return ["rates" => [], "date" => "Unavailable"];
+      } 
    }
 
    return $new_cache_data;
-
 }
 
 // Convertit un montant d'une devise vers une autre
@@ -73,7 +82,8 @@ $date_update = $bce_data["date"];
 
 // Vérification des données utilisateur
 if (!isset($_GET['currency_from'], $_GET['currency_to'], $_GET['amount']) || !is_numeric($_GET['amount'])) {
-   die("<div class='error-message'>Error: Invalid or missing data.</div>");
+   echo "<div class='error-message'>Error: Invalid or missing data.</div>";
+   exit;
 }
 
 $currency_from = strtoupper($_GET['currency_from']);
@@ -100,7 +110,7 @@ $formatted_amount = number_format($amount, 2, ',', ' '); //Conversion pour affic
          <?php echo "{$formatted_amount} {$currency_from} = <strong>{$conversion_result}</strong>"; ?>
       </p>
    </div>   
-   <a href="/src/index.php" class="back-button">⬅ Back to Conversion</a>
+   <a href="/index.php" class="back-button">⬅ Back to Conversion</a>
    <p class="update-info">Rate updated on : <strong><?php echo $date_update; ?></strong></p>
 </div>
 </form>

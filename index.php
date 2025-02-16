@@ -1,26 +1,46 @@
-
 <?php
 $currencies = [
+   ["code" => "EUR", "name" => "Euro", "flag" => "🇪🇺"],
+   ["code" => "USD", "name" => "US Dollar", "flag" => "🇺🇸"],
+   ["code" => "JPY", "name" => "Japanese Yen", "flag" => "🇯🇵"],
+   ["code" => "BGN", "name" => "Lev Bulgare", "flag" => "🇧🇬"],
+   ["code" => "CZK", "name" => "Couronne Tchèque", "flag" => "🇨🇿"],
+   ["code" => "DKK", "name" => "Couronne Danoise", "flag" => "🇩🇰"],
+   ["code" => "GBP", "name" => "British Pound", "flag" => "🇬🇧"],
+   ["code" => "HUF", "name" => "Forint Hongrois", "flag" => "🇭🇺"],
+   ["code" => "PLN", "name" => "Złoty Polonais", "flag" => "🇵🇱"],
+   ["code" => "RON", "name" => "Leu Roumain", "flag" => "🇷🇴"],
+   ["code" => "SEK", "name" => "Couronne Suédoise", "flag" => "🇸🇪"],
+   ["code" => "CHF", "name" => "Swiss Franc", "flag" => "🇨🇭"],
+   ["code" => "ISK", "name" => "Couronne Islandaise", "flag" => "🇮🇸"],
+   ["code" => "NOK", "name" => "Couronne Norvégienne", "flag" => "🇳🇴"],
+   ["code" => "TRY", "name" => "Livre Turque", "flag" => "🇹🇷"],
    ["code" => "AUD", "name" => "Australian Dollar", "flag" => "🇦🇺"],
    ["code" => "BRL", "name" => "Brazilian Real", "flag" => "🇧🇷"],
    ["code" => "CAD", "name" => "Canadian Dollar", "flag" => "🇨🇦"],
    ["code" => "CNY", "name" => "Chinese Yuan", "flag" => "🇨🇳"],
-   ["code" => "DZD", "name" => "Algerian Dinar", "flag" => "🇩🇿"],
-   ["code" => "EGP", "name" => "Egyptian Pound", "flag" => "🇪🇬"],
-   ["code" => "EUR", "name" => "Euro", "flag" => "🇪🇺"],
-   ["code" => "GBP", "name" => "British Pound", "flag" => "🇬🇧"],
-   ["code" => "CHF", "name" => "Swiss Franc", "flag" => "🇨🇭"],
+   ["code" => "HKD", "name" => "Dollar de Hong Kong", "flag" => "🇭🇰"],
+   ["code" => "IDR", "name" => "Roupie Indonésienne", "flag" => "🇮🇩"],
    ["code" => "ILS", "name" => "Israeli Shekel", "flag" => "🇮🇱"],
    ["code" => "INR", "name" => "Indian Rupee", "flag" => "🇮🇳"],
-   ["code" => "JPY", "name" => "Japanese Yen", "flag" => "🇯🇵"],
    ["code" => "KRW", "name" => "South Korean Won", "flag" => "🇰🇷"],
-   ["code" => "MAD", "name" => "Moroccan Dirham", "flag" => "🇲🇦"],
    ["code" => "MXN", "name" => "Mexican Peso", "flag" => "🇲🇽"],
-   ["code" => "RUB", "name" => "Russian Ruble", "flag" => "🇷🇺"],
-   ["code" => "TND", "name" => "Tunisian Dinar", "flag" => "🇹🇳"],
-   ["code" => "USD", "name" => "US Dollar", "flag" => "🇺🇸"],
+   ["code" => "MYR", "name" => "Ringgit Malaisien", "flag" => "🇲🇾"],
+   ["code" => "NZD", "name" => "Dollar Néo-Zélandais", "flag" => "🇳🇿"],
+   ["code" => "PHP", "name" => "Peso Philippin", "flag" => "🇵🇭"],
+   ["code" => "SGD", "name" => "Dollar de Singapour", "flag" => "🇸🇬"],
+   ["code" => "THB", "name" => "Baht Thaïlandais", "flag" => "🇹🇭"],
    ["code" => "ZAR", "name" => "South African Rand", "flag" => "🇿🇦"],
 ];
+
+/*
+DONNEES NON RECUPEREES PAR LA BCE
+   ["code" => "DZD", "name" => "Algerian Dinar", "flag" => "🇩🇿"],
+   ["code" => "EGP", "name" => "Egyptian Pound", "flag" => "🇪🇬"],
+   ["code" => "MAD", "name" => "Moroccan Dirham", "flag" => "🇲🇦"],
+   ["code" => "RUB", "name" => "Russian Ruble", "flag" => "🇷🇺"],
+   ["code" => "TND", "name" => "Tunisian Dinar", "flag" => "🇹🇳"],
+*/
 
 // Tri des monnaies par nom
 usort($currencies, function ($a, $b) {
