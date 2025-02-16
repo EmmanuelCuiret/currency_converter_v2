@@ -2,7 +2,7 @@
    "name": "Currency Converter",
    "short_name": "ConverterV2",
    "description": "An easy-to-use currency converter",
-   "start_url": "/src",
+   "start_url": "/",
    "display": "standalone",
    "theme_color": "#ffffff",
    "background_color": "#ffffff",
