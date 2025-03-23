@@ -9,7 +9,7 @@ if (!window.Swal) {
 }
 
 function checkVersion() {
-   fetch("https://currency-converter-at78.onrender.com/src/version.json")
+   fetch("https://currency2-9ix6.onrender.com/src/version.json")
       .then(response => response.json())
       .then(data => {
          const currentVersion = localStorage.getItem("app_version");
