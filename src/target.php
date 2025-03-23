@@ -104,7 +104,7 @@ $formatted_amount = number_format($amount, 2, ',', ' '); //Conversion pour affic
 <body>
 <form>
 <div class="container">
-   <h1>💰 Currency Conversion 💰</h1>
+   <h1>💰 Currency Conversion</h1>
    <div class="result-box">
       <p class="result-text">
          <?php echo "{$formatted_amount} {$currency_from} = <strong>{$conversion_result}</strong>"; ?>

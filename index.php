@@ -146,9 +146,5 @@ function swapCurrencies() {
    <button type="submit">Submit</button>
 </form>
 
-<script>
- 
-</script>
-
 </body>
 </html>
